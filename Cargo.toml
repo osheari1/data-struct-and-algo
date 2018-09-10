@@ -1,0 +1,11 @@
+[package]
+name = "data-struct-and-algo"
+version = "0.1.0"
+authors = ["Riley O'Shea <RileyOShea@fairisaac.com>"]
+
+[dev-dependencies]
+criterion = "0.2"
+
+[[bench]]
+name = "week1"
+harness = false
