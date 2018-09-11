@@ -7,5 +7,6 @@ use data_struct_and_algo::{
 fn main() {
 //    week1::sum_two_digits::main();
 //    week1::max_pairwise_prod::main();
-    week1::max_pairwise_prod::run_stress_test();
+    week1::stress_test_max_pairewise_prod::run_stress_test();
+//    week1::stress_test_max_pairewise_prod::simple_test();
 }

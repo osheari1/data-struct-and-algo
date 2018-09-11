@@ -16,16 +16,17 @@ fn sum_two_digits_benchmark(c: &mut Criterion) {
 }
 
 fn max_pairwise_prod_benchmark(c: &mut Criterion) {
+
     c.bench_function(
-        "max_pairwise_prod naive [1 4 6 10 11 12]",
+        "max_pairwise_prod naive",
         |b| b.iter(|| max_pairwise_prod::run_naive(
-            &vec![1, 4, 6, 10, 11, 2])),
+            &(1..10^5).collect::<Vec<i64>>()))
     );
 
     c.bench_function(
-        "max_pairwise_prod naive_fast [1 4 6 10 11 12]",
+        "max_pairwise_prod naive_fast",
         |b| b.iter(|| max_pairwise_prod::run_naive_fast(
-            vec![1, 4, 6, 10, 11, 2])),
+            (1..10^5).collect::<Vec<i64>>())),
     );
 }
 
