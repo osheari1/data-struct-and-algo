@@ -9,7 +9,7 @@ use ::week1::max_pairwise_prod::{
 use self::rand::Rng;
 
 pub fn run_stress_test() {
-    stress_test(10, 20, 2000, &run_naive_faster);
+    stress_test(1000, 20000, 2000, &run_naive_faster);
 }
 
 pub fn simple_test() {

@@ -75,25 +75,25 @@ pub fn run_naive_faster(b: Vec<i64>) -> i64 {
             ix = i;
         }
     }
-    //FIXME:
-    let mut ix_s  = 0;
-    for i in 0..arr_l.len() {
-        if i != ix && arr_l[i] > arr_l[ix_s] {
-            ix_s = i;
+
+    let l = arr_l[ix];
+    arr_l.remove(ix);
+
+    let mut s = 0;
+    if arr_l.len() > 0 {
+        for i in 0..arr_l.len() {
+            if arr_l[i] > s {
+                s = arr_l[i];
+            }
         }
     }
-    let mut s = 0;
-    if arr_l[ix_s] < arr_s[ix] || ix_s == ix {
-        s = arr_s[ix];
+
+    if arr_s.len() - 1 >= ix {
+        if s < arr_s[ix] {
+            s = arr_s[ix];
+        }
     }
 
-
-
-    println!("{:?}", b);
-    println!("{:?}", arr_l);
-    println!("{:?}", arr_s);
-    println!("{} {}", arr_l[ix], arr_l[ix_s]);
-    println!("{} {}", ix, ix_s);
-    (arr_l[ix] * arr_l[ix_s]) as i64
+    l * s
 }
 
