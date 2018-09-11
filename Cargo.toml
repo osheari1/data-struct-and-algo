@@ -3,6 +3,9 @@ name = "data-struct-and-algo"
 version = "0.1.0"
 authors = ["Riley O'Shea <RileyOShea@fairisaac.com>"]
 
+[dependencies]
+rand = "0.5.5"
+
 [dev-dependencies]
 criterion = "0.2"
 

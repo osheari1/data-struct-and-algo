@@ -19,14 +19,13 @@ fn max_pairwise_prod_benchmark(c: &mut Criterion) {
     c.bench_function(
         "max_pairwise_prod naive [1 4 6 10 11 12]",
         |b| b.iter(|| max_pairwise_prod::run_naive(
-            5,
             &vec![1, 4, 6, 10, 11, 2])),
     );
 
     c.bench_function(
         "max_pairwise_prod naive_fast [1 4 6 10 11 12]",
         |b| b.iter(|| max_pairwise_prod::run_naive_fast(
-            &vec![1, 4, 6, 10, 11, 2])),
+            vec![1, 4, 6, 10, 11, 2])),
     );
 }
 
