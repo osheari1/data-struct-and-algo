@@ -28,6 +28,12 @@ fn max_pairwise_prod_benchmark(c: &mut Criterion) {
         |b| b.iter(|| max_pairwise_prod::run_naive_fast(
             (1..10^5).collect::<Vec<i64>>())),
     );
+
+    c.bench_function(
+        "max_pairwise_prod naive_faster",
+        |b| b.iter(|| max_pairwise_prod::run_naive_fast(
+            (1..10^5).collect::<Vec<i64>>())),
+    );
 }
 
 
