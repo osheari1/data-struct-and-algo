@@ -40,7 +40,7 @@ pub fn stress_test(n: i64, m: i64, total: i64, fnc: &Fn(Vec<i64>) -> i64) {
         for _i in 0..n_rand {
             arr.push(rng.gen_range(0, m))
         }
-        println!("{:?}", arr);
+//        println!("{:?}", arr);
         let result_naive = run_naive(&arr);
         let result_fast = fnc(arr);
         println!("Naive: {}", result_naive);

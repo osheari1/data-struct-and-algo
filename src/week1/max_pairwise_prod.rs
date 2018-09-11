@@ -1,5 +1,4 @@
 //extern crate rand;
-
 use std::cmp::max;
 //use self::rand;
 //use self::rand::Rng;
@@ -50,24 +49,17 @@ pub fn run_naive_fast(mut b: Vec<i64>) -> i64 {
 //   println!("{} {}", b[n - 1], b[n]);
     b[n - 1] * b[n]
 }
+pub fn run_naive_faster(b: Vec<i64>) -> i64 {
+    let mut ix = 0;
+    let mut arr_l: Vec<i64> = Vec::new();
+    let mut arr_s: Vec<i64> = Vec::new();
 
-//pub fn run_naive_faster(b: Vec<i64>) -> i64 {
-//    let mut ix = 0;
-//    let mut arr = vec![b[ix]];
-//
-//    let n = b.len() - 1;
-//    for i in 1..n + 1 {
-//        if b[i] > b[ix] {
-//            ix = i;
-//        }
-//        if b[i] >= arr[arr.len()-1] {
-//            arr.push(b[i])
-//        } else if arr.len() == 1 && b[i] >= arr[arr.len() - 1] {
-//            arr.push(b[i])
-//        }
-//    }
-//    println!("{:?}", b);
-//    println!("{:?}", arr);
-//    arr[arr.len()-2] * b[ix]
-//}
+
+    println!("{:?}", b);
+    println!("{:?}", arr_l);
+    println!("{:?}", arr_s);
+    println!("{} {}", b[ix], b[ix_s]);
+    println!("{} {}", ix, ix_s);
+    b[ix] * b[ix_s]
+}
 
