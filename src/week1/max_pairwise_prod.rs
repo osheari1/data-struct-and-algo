@@ -49,6 +49,7 @@ pub fn run_naive_fast(mut b: Vec<i64>) -> i64 {
 //   println!("{} {}", b[n - 1], b[n]);
     b[n - 1] * b[n]
 }
+
 pub fn run_naive_faster(b: Vec<i64>) -> i64 {
     let mut ix  = 0;
     let mut arr_l: Vec<i64> = Vec::new();
@@ -96,4 +97,14 @@ pub fn run_naive_faster(b: Vec<i64>) -> i64 {
 
     l * s
 }
+
+/*
+TODO: O(n + log n - 2).
+This can be done by doing a single pass then somehow doing n/2 operations
+*/
+pub fn run_even_faster(b: Vec<i64>) -> i64 {
+
+}
+
+
 
