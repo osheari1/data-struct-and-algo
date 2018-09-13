@@ -3,25 +3,26 @@ extern crate rand;
 use ::week1::max_pairwise_prod::{
     run_naive,
     run_naive_fast,
-    run_naive_faster
+    run_naive_faster,
+    run_split_find,
 };
 
 use self::rand::Rng;
 
 pub fn run_stress_test() {
-    stress_test(1000, 20000, 2000, &run_naive_faster);
+    stress_test(1000, 10000, 2000, &run_split_find);
 }
 
 pub fn simple_test() {
     let mut rng = rand::thread_rng();
-    let n_rand = rng.gen_range(2, 10);
+    let n_rand = rng.gen_range(2, 15);
     let mut arr: Vec<i64> = Vec::new();
     for _i in 0..n_rand {
         arr.push(rng.gen_range(0, 10))
     }
 
     let result_naive = run_naive(&arr);
-    let result_faster = run_naive_faster(arr);
+    let result_faster = run_split_find(arr);
 
     println!("Naive: {}", result_naive);
     println!("Fast: {}", result_faster);

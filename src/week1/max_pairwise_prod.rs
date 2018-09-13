@@ -51,22 +51,22 @@ pub fn run_naive_fast(mut b: Vec<i64>) -> i64 {
 }
 
 pub fn run_naive_faster(b: Vec<i64>) -> i64 {
-    let mut ix  = 0;
+    let mut ix = 0;
     let mut arr_l: Vec<i64> = Vec::new();
     let mut arr_s: Vec<i64> = Vec::new();
 
     let n = b.len() - 1;
-    for i in (0..n+1).filter(|x| x % 2 == 0) {
+    for i in (0..n + 1).filter(|x| x % 2 == 0) {
         if i + 1 >= b.len() {
             arr_l.push(b[i]);
-            continue
+            continue;
         }
 
-        if b[i] > b[i+1] {
+        if b[i] > b[i + 1] {
             arr_l.push(b[i]);
-            arr_s.push(b[i+1]);
+            arr_s.push(b[i + 1]);
         } else {
-            arr_l.push(b[i+1]);
+            arr_l.push(b[i + 1]);
             arr_s.push(b[i]);
         }
     }
@@ -98,12 +98,49 @@ pub fn run_naive_faster(b: Vec<i64>) -> i64 {
     l * s
 }
 
-/*
-TODO: O(n + log n - 2).
-This can be done by doing a single pass then somehow doing n/2 operations
-*/
-pub fn run_even_faster(b: Vec<i64>) -> i64 {
+pub fn run_split_find(b: Vec<i64>) -> i64 {
+    /// Find max pairwise product by recursively performing run_naive_faster on
+    /// the larger value
 
+
+    fn find_largest(arr: Vec<usize>, b: &Vec<i64>) -> i64 {
+//         arr contains the index, with respect to the array b, of
+//         each value. Need to pass b around since local functions do not
+//         have access to their surrounding environment.
+//        println!("{:?}", (&arr).into_iter()
+//            .map(|x| { b[*x] })
+//            .collect::<Vec<i64>>());
+//        if arr.len() == 1 {
+//            return arr[0] as i64
+//        }
+        let mut arr_l: Vec<usize> = Vec::new();
+        for i in (0..arr.len()).filter(|x| x % 2 == 0) {
+            if i >= arr.len()-1 {
+                arr_l.push(arr[i]);
+            } else {
+                if b[arr[i]] > b[arr[i + 1]] {
+                    arr_l.push(arr[i]);
+                } else {
+                    arr_l.push(arr[i + 1]);
+                }
+            }
+        }
+
+        if arr_l.len() == 1 {
+            return arr_l[0] as i64;
+        }
+
+        return find_largest(arr_l, b);
+    }
+    let ix_l: usize = find_largest((0..b.len()).collect(), &b) as usize;
+    let mut ix_s: usize = if ix_l == 0 { 1 } else { 0 };
+    for i in (1..b.len()).filter(|x| *x != ix_l) {
+        if b[ix_s] < b[i] {
+            ix_s = i;
+        }
+    }
+
+    b[ix_l] * b[ix_s]
 }
 
 
