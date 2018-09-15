@@ -1,5 +1,6 @@
 extern crate rand;
 
+#[allow(unused_imports)]
 use ::week1::max_pairwise_prod::{
     run_naive,
     run_naive_fast,
