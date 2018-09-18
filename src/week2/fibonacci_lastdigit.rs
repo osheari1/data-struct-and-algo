@@ -1,4 +1,3 @@
-
 pub fn main() {
     let mut buff = String::new();
     ::std::io::stdin().read_line(&mut buff).expect("Could not read line");

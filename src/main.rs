@@ -15,8 +15,9 @@ fn main() {
 //    week2::fibonacci_lastdigit::run_stress_test();
 //    week2::fibonacci::main();
 //    week2::gcd::run_stress_test();
-    week2::lcm::run_stress_test();
-//    week2::gcd::main();
+//    week2::lcm::main();
+//    week2::lcm::run_stress_test();
+    week2::pisano_stresstest::run_stress_test();
 
 
 }
