@@ -1,3 +1,9 @@
+pub mod money_change;
+
+use money_change::{
+    stress_test,
+    main
+};
 fn main() {
-    println!("Hello, world!");
+    main::main();
 }
