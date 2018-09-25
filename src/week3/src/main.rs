@@ -1,3 +1,4 @@
+#[macro_use] extern crate itertools;
 pub mod money_change;
 pub mod max_value_of_loot;
 

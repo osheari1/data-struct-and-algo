@@ -45,3 +45,15 @@ fn stress_test(n: i32, m: i32, cap: f32, fnc: &Fn(Vec<(f32, f32, f32)>, f32) -> 
 
 //fn run_naive
 
+pub fn run_naive(mut x: Vec<(f32, f32, f32)>, cap: f32) -> f32 {
+//    let mut indexes = Vec::new();
+
+//    for i in 0..x.len() {
+//        indexes.push(0..x.len());
+//    }
+
+//    for t in iproduct!(4, 4, 5) {
+//        println!("{:?}", t);
+//    }
+    0.0
+}
