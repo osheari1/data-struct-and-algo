@@ -1,5 +1,6 @@
 extern crate rand;
 use self::rand::Rng;
+use ::num_inversions::main::merge_sort;
 //use self::rand::seq::sample_iter;
 
 /// # Constraints
@@ -7,10 +8,10 @@ use self::rand::Rng;
 /// 1 <= a_i <= 10^9 for all 0 <= i < n
 ///
 pub fn run_stress_test() {
-    stress_test(10i32.pow(1) as i32, 10, 100, &run_naive)
+    stress_test(10i32.pow(1) as i32, 10, 100, &merge_sort)
 }
 
-fn stress_test(a: i32, n: i32, m: i32, fnc: &Fn(&Vec<i32>) -> i32) {
+fn stress_test(a: i32, n: i32, m: i32, fnc: &Fn(Vec<i32>) -> Vec<i32>) {
 
     let mut rng = rand::thread_rng();
 
@@ -21,13 +22,16 @@ fn stress_test(a: i32, n: i32, m: i32, fnc: &Fn(&Vec<i32>) -> i32) {
             ns.push(rng.gen_range(0, a))
         }
 
-        println!("{:?}", &ns);
+//        println!("{:?}", &ns);
         let naive = run_naive(&ns);
-//        let test = fnc(&n);
+        let test = fnc(ns.to_vec());
 
-        println!("Naive {:?}", naive);
-//        println!("Test {:?}", test);
-//        println!();
+//        println!("Naive {:?}", naive);
+        println!("orig {:?}", ns);
+        ns.sort();
+        println!("Sorted {:?}", ns);
+        println!("Test {:?}", test);
+        println!();
 
 //        if naive != test {
 //            println!("Naive {:?}", naive);
