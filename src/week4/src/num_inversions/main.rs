@@ -21,8 +21,8 @@ pub fn main() {
 }
 
 
-//pub fn run(ln: &usize, ns: &Vec<i32>, lk: &usize, ks: &Vec<i32>) -> Vec<i32> {
-//}
+pub fn run(ns: &Vec<i32>) -> i32 {
+}
 
 
 

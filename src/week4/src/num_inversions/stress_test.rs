@@ -17,15 +17,15 @@ fn stress_test(a: i32, n: i32, m: i32, fnc: &Fn(&Vec<i32>) -> i32) {
     for _  in 0..m {
 
         let mut ns: Vec<i32> = Vec::new();
-        for _ in 0..n {
+        for _ in 0..rng.gen_range(1, n) {
             ns.push(rng.gen_range(0, a))
         }
 
         println!("{:?}", &ns);
-//        let naive = run_naive(&ns);
+        let naive = run_naive(&ns);
 //        let test = fnc(&n);
 
-//        println!("Naive {:?}", naive);
+        println!("Naive {:?}", naive);
 //        println!("Test {:?}", test);
 //        println!();
 

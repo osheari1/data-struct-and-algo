@@ -41,7 +41,7 @@ pub fn run(ln: &usize, ns: &Vec<i32>, lk: &usize, ks: &Vec<i32>) -> Vec<i32> {
             return -1;
         }
 
-        let mut mid = if (h - l) > 1 { l + (h - l) / 2 } else { l };
+        let mid = if (h - l) > 1 { l + (h - l) / 2 } else { l };
 
 //        println!("mid: {}", mid);
 //        println!();
