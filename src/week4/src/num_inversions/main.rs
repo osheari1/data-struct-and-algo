@@ -14,62 +14,98 @@ pub fn main() {
         ns[i] = numbers.next().unwrap().parse().unwrap();
     }
 
-//    let out = run(&ln, &n, &lk, &k);
-//    for o in out {
-//        print!("{} ", o);
-//    }
+    let x = run_naive(&ns);
+    print!("{} ", x);
+}
+
+pub fn run(ns: Vec<i32>) -> (Vec<i32>, i32) {
+    merge_sort(ns, 0)
 }
 
 // TODO: Update partition function to use partition3 for equal elements
-pub fn merge_sort(ns: Vec<i32>) -> Vec<i32> {
+fn merge_sort(ns: Vec<i32>, inversions: i32) -> (Vec<i32>, i32) {
 //    println!("{:?}", ns);
 //    println!("{}", ns.len());
+
     if ns.len() <= 1 {
-        return ns;
+        return (ns, inversions);
     }
-    let mid = if ns.len() == 2 { 1 } else { (ns.len() - 1) / 2};
-//    print!("{:?}", ns);
-//    print!("{}", mid);
+    let mid = if ns.len() == 2 { 1 } else { (ns.len() - 1) / 2 };
+//    println!("ns: {:?}", ns);
 
 //    println!("{}", mid);
 //    println!("{:?}", 0..mid);
 //    println!("{:?}", mid..ns.len());
 //    println!();
-    let b = merge_sort(ns[0..mid].to_vec());
-    let c = merge_sort(ns[mid..ns.len()].to_vec());
-    let d = merge(b.to_vec(), c.to_vec());
-//    print!("{:?}", b);
-//    print!("{:?}", c);
+//    println!("o: {}", inversions);
+    let (b, inversions_b) = merge_sort(ns[0..mid].to_vec(), 0);
+//    println!("b: {}", inversions_b);
+    let (c, inversions_c) = merge_sort(ns[mid..ns.len()].to_vec(), 0);
+//    println!("c: {}", inversions_c);
+    let (d, inversions_i) = merge(
+        b.to_vec(),
+        c.to_vec(),
+//        inversions_b + inversions_c
+        0
+    );
+    let inversions_o = inversions_i + inversions_b + inversions_c;
+//    let inversions_o = inversions_i;
+//    println!("i: {}", inversions_o);
+//    println!();
 
-    d
+    (d, inversions_o)
 }
 
-fn merge(mut b: Vec<i32>, mut c: Vec<i32>) -> Vec<i32> {
-//    let mut d = vec![0; b.len() + c.len()];
+fn merge(mut b: Vec<i32>, mut c: Vec<i32>, mut inversions: i32) -> (Vec<i32>, i32) {
     let mut d = Vec::new();
-    let mut b_i = 0 as usize;
-    let mut c_i = 0 as usize;
-    while b_i < b.len() && c_i < c.len() {
-//        println!("b_i: {}", b_i);
-//        println!("c_i: {}", c_i);
-        if b[b_i] <= c[c_i] {
-            d.push(b[b_i]);
-            b_i += 1;
+    let mut n_b = 0;
+    while !b.is_empty() && !c.is_empty() {
+        if b[0] > c[0] {
+//            if b[0] != b[b.len()-1] {
+//                n_b += 1;
+//            }
+            n_b += 1;
+            inversions += 1;
+            d.push(c[0]);
+            c.remove(0);
         } else {
-            d.push(c[c_i]);
-            c_i += 1;
+//            n_b += 1;
+            d.push(b[0]);
+            b.remove(0);
         }
+//        if b[0] < c[0] {
+////            inversions += 1;
+//            d.push(b[0]);
+//            b.remove(0);
+//        } else {
+//            inversions += 1;
+//            d.push(c[0]);
+//            c.remove(0);
+//        }
+//        println!("d: {:?}", d);
     }
-    if b_i > b.len() && c_i > c.len() {
-        return d
-    } else if b_i > b.len() {
+    if !c.is_empty() {
+//        inversions += (c.len() * d.len()) as i32;
         d.append(&mut c);
     } else {
+
+        inversions += (b.len() * d.len() - n_b)  as i32;
         d.append(&mut b);
     }
-    d
+    (d, inversions)
 }
 
+fn run_naive(ns: &Vec<i32>) -> i32 {
+    let mut inversions = 0;
+    for i in 0..ns.len() {
+        for j in i+1..ns.len() {
+            if ns[i] > ns[j] {
+                inversions += 1;
+            }
+        }
+    }
+    inversions
+}
 
 
 
