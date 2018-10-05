@@ -8,7 +8,7 @@ use ::num_inversions::main::run;
 /// 1 <= a_i <= 10^9 for all 0 <= i < n
 ///
 pub fn run_stress_test() {
-    stress_test(10i32.pow(1) as i32, 10, 100, &run);
+    stress_test(10i32.pow(4) as i32, 100, 1000, &run);
 }
 
 fn stress_test(a: i32, n: i32, m: i32, fnc: &Fn(Vec<i32>) -> (Vec<i32>, i32)) {
@@ -34,21 +34,21 @@ fn stress_test(a: i32, n: i32, m: i32, fnc: &Fn(Vec<i32>) -> (Vec<i32>, i32)) {
         println!("Test {:?}", test);
         println!();
 
-//        if naive != test {
-//            println!("Naive {:?}", naive);
-//            println!("Test {:?}", test);
-//            println!("Failure");
-//            return
-//        }
+        if naive != test {
+            println!("Naive {:?}", naive);
+            println!("Test {:?}", test);
+            println!("Failure");
+            return
+        }
 //        println!("Match");
     }
     println!("Success");
-    let mut vec = (0..10).collect::<Vec<i32>>();
-    vec.reverse();
-    println!("{:?}", &vec);
-    println!("Naive: {}", run_naive(&vec));
+//    let mut vec = (0..10).collect::<Vec<i32>>();
+//    vec.reverse();
+//    println!("{:?}", &vec);
+//    println!("Naive: {}", run_naive(&vec));
 //    println!("True: {}", vec.len() * (vec.len() - 1) / 2);
-    println!("Test: {}", fnc(vec).1);
+//    println!("Test: {}", fnc(vec).1);
 }
 //TODO: test naive
 fn run_naive(ns: &Vec<i32>) -> i32 {
