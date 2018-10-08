@@ -14,7 +14,7 @@ pub fn main() {
         ns[i] = numbers.next().unwrap().parse().unwrap();
     }
 
-    let (_, x) = run(ns);
+    let x = run_naive(&ns);
     print!("{} ", x);
 }
 
@@ -61,18 +61,35 @@ fn merge(mut b: Vec<i32>, mut c: Vec<i32>, mut inversions: i32) -> (Vec<i32>, i3
     let mut n_b = 0;
     while !b.is_empty() && !c.is_empty() {
         if b[0] > c[0] {
+//            if b[0] != b[b.len()-1] {
+//                n_b += 1;
+//            }
             n_b += 1;
-            inversions += (b.len()) as i32;
+            inversions += 1;
             d.push(c[0]);
             c.remove(0);
         } else {
+//            n_b += 1;
             d.push(b[0]);
             b.remove(0);
         }
+//        if b[0] < c[0] {
+////            inversions += 1;
+//            d.push(b[0]);
+//            b.remove(0);
+//        } else {
+//            inversions += 1;
+//            d.push(c[0]);
+//            c.remove(0);
+//        }
+//        println!("d: {:?}", d);
     }
     if !c.is_empty() {
+//        inversions += (c.len() * d.len()) as i32;
         d.append(&mut c);
     } else {
+
+        inversions += (b.len() * d.len() - n_b)  as i32;
         d.append(&mut b);
     }
     (d, inversions)

@@ -50,7 +50,7 @@ fn stress_test(a: i32, n: i32, m: i32, fnc: &Fn(Vec<i32>) -> (Vec<i32>, i32)) {
 //    println!("True: {}", vec.len() * (vec.len() - 1) / 2);
 //    println!("Test: {}", fnc(vec).1);
 }
-//TODO: test naive
+
 fn run_naive(ns: &Vec<i32>) -> i32 {
     let mut inversions = 0;
     for i in 0..ns.len() {
