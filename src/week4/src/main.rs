@@ -1,6 +1,8 @@
 #![allow(unused_imports)]
 #![allow(unused_variables)]
 #![allow(dead_code)]
+extern crate core;
+
 //pub mod binary_search;
 //pub mod num_inversions;
 pub mod closest_points;

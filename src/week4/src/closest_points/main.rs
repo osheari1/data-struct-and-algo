@@ -1,6 +1,7 @@
 use std::num;
 use std::cmp::min;
 use std::f64;
+use std::ops::Range;
 
 pub fn main() {
     // Read
@@ -59,7 +60,7 @@ pub fn run(mut ns: Vec<(i64, i64)>) -> f64 {
        let mut ix_keep: Vec<usize> = Vec::new();
 //       let mut ix_keep = (l..(h+1)).collect().un
        for i in l..(h+1) {
-           if (ns[i].0 as f64 - mid_line).abs() <= d {
+           if (ns[i].0 as f64 - mid_line).abs() < d {
                ix_keep.push(i);
            }
        }
@@ -68,7 +69,8 @@ pub fn run(mut ns: Vec<(i64, i64)>) -> f64 {
            .map(|x| ns[*x]).collect();
        ns_keep.sort_by_key(|x| x.1);
 //       println!("keep_ns: {:?}", ns_keep);
-       let d_prime = run_naive(&ns_keep);
+       let d_prime = run_naive(&ns_keep, d, 7);
+//       let d_prime = go(&ns_keep, 0, ns.len()-1, f64::INFINITY);
 //       println!("d_prime: {:?}", d_prime);
 
        d.min(d_prime)
@@ -80,10 +82,20 @@ pub fn run(mut ns: Vec<(i64, i64)>) -> f64 {
 
 
 
-fn run_naive(ns: &Vec<(i64, i64)>) -> f64 {
+fn run_naive(ns: &Vec<(i64, i64)>, min_d: f64, lim: i32) -> f64 {
+    // ns is sorted by y
     let mut min = f64::INFINITY;
+    fn y_range(x: usize, ns_size: i32,  lim: usize) -> Range<usize> {
+        let l =  if x as i32 - lim as i32 <= 0 { 0 } else { x - lim };
+        let h = if x as i32 + lim as i32 >= ns_size { ns_size as usize } else { x + lim };
+        l..h
+    }
     for point_x in 0..ns.len() {
-        for point_y in 0..ns.len() {
+        let y = y_range(point_x, ns.len() as i32, 7);
+        for point_y in y {
+            if (point_x as i32 - point_y as i32).abs() > lim {
+                continue
+            }
             if point_x == point_y {
                 continue;
             }

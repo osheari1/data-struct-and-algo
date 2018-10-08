@@ -19,7 +19,7 @@ use closest_points::main::run;
 ///
 pub fn run_stress_test() {
 //    stress_test( 10, 10i32.pow(5) as i32, 100, &run_naive);
-    stress_test(10i64.pow(9), 10i32.pow(5), 100, &run);
+    stress_test(10i64.pow(9), 10i32.pow(3), 1000, &run);
 }
 
 fn stress_test(a: i64, n: i32, m: i32, fnc: &Fn(Vec<(i64, i64)>) -> f64) {
@@ -34,10 +34,10 @@ fn stress_test(a: i64, n: i32, m: i32, fnc: &Fn(Vec<(i64, i64)>) -> f64) {
 
 
 //        println!("{:?}", &ns);
-//        let t0 = SystemTime::now();
-//        let naive = run_naive(&ns);
-//        println!("Naive {:?}", naive);
-//        println!("{:?}", SystemTime::now().duration_since(t0).unwrap());
+        let t0 = SystemTime::now();
+        let naive = run_naive(&ns);
+        println!("Naive {:?}", naive);
+        println!("{:?}", SystemTime::now().duration_since(t0).unwrap());
 
         let t0 = SystemTime::now();
         let test = fnc(ns.to_vec());
@@ -47,13 +47,13 @@ fn stress_test(a: i64, n: i32, m: i32, fnc: &Fn(Vec<(i64, i64)>) -> f64) {
         println!();
 
         ns.sort_by_key(|x| x.0);
-//        if naive != test {
-//            println!("{:?}", &ns);
-//            println!("Naive {:?}", naive);
-//            println!("Test {:?}", test);
-//            println!("Failure");
-//            return
-//        }
+        if naive != test {
+            println!("{:?}", &ns);
+            println!("Naive {:?}", naive);
+            println!("Test {:?}", test);
+            println!("Failure");
+            return
+        }
 //        println!("Match");
     }
     println!("Success");
