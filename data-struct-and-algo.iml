@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="RUST_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/rust-slns/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/examples" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust-slns/benches" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust-slns/src/week3/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/week3/examples" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/week3/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/week3/benches" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust-slns/src/week2/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/week2/examples" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/week2/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/week2/benches" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust-slns/src/week1/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/week1/examples" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/week1/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/week1/benches" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/rust-slns/src/week4/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/week4/examples" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/week4/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/week4/benches" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/rust-slns/src/week3/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust-slns/src/week4/target" />
+      <excludeFolder url="file://$MODULE_DIR$/src/week1/target" />
+      <excludeFolder url="file://$MODULE_DIR$/src/week2/target" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
