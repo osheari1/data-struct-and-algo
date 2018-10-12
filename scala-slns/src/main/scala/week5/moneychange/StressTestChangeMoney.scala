@@ -1,23 +1,31 @@
 package week5
 
 import scala.util.Random
-//import Main.editDistance
+import ChangeMoney.changeMoney
 
 object StressTestChangeMoney {
 
   def main(args: Array[String]): Unit = {
-    val n = 10
-    val m = 10
+    val n = math.pow(10, 2).toInt
+    val m = 1000
     runStressTest(n, m)
   }
 
   def runStressTest(n: Int, m: Int): Unit = {
     val rng = new Random()
-    for (i <- 0 to m) {
-      val x = rng.nextInt(n)
-      val result = changeMoneyBruteForce(x)
-//      println(s"x: $x, result: $result")
-      println("result")
+    for (i <- 1 to m) {
+      var x = rng.nextInt(n)
+      x = if (x == 0) 1 else x
+      val resultNaive = changeMoneyBruteForce(x)
+      val result = changeMoney(x)
+      println(s"x: $x")
+      println(s"naive: $resultNaive")
+      println(s"test: $result")
+      println()
+//      if (resultNaive != result) {
+//        println("Failure")
+//        return
+//      }
     }
   }
 

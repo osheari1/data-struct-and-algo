@@ -1,11 +1,13 @@
-//package week5
+package week5
+
+//import scala.annotation.tailrec
 
 object ChangeMoney extends App {
 
   override def main(args: Array[String]): Unit = {
     val scanner = new java.util.Scanner(System.in)
     val money = scanner.nextLine().toInt
-    val result = changeMoneyBruteForce(money)
+    val result = changeMoney(money)
     System.out.print(result)
   }
 
@@ -30,9 +32,36 @@ object ChangeMoney extends App {
     minNC.toInt
   }
 
-//  def changeMoney(m: Int): Int = {
-//    0
-//  }
+  def changeMoney(M: Int): Int = {
+    val cs = List(1, 3, 4)
+    val minC = List.fill(M+1)(Int.MaxValue).updated(0, 0)
+    val m = M
+//    println(s"M: $M")
+//    println(s"m: $m")
+
+    def go(i: Int, minC: List[Int]): List[Int] = {
+      var minCurrent = minC(i)
+//      println(s"i: $i")
+//      println(s"m-i: ${m - i}")
+//      println(s"minCurrent: ${minC(i)}")
+
+      for (c <- cs) {
+//        println(s"c: $c")
+        if (c <= i) {
+          if (minC(i-c) + 1 < minCurrent)
+            minCurrent = minC(i - c) + 1
+        }
+      }
+//      println(s"newMin: $minCurrent")
+      if (i == m) {
+        return minC.updated(m, minCurrent)
+      }
+      go(i+1, minC.updated(i, minCurrent))
+    }
+    val newMinc = go(1, minC)
+//    println(newMinc)
+    newMinc(m)
+  }
 
 
 }
