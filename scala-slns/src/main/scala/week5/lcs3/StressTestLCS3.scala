@@ -21,10 +21,13 @@ object StressTestLCS3 {
 //    val x = (0 to n) map (_ => rng.nextInt(10)) toList
 //    val y = (0 to m) map (_ => rng.nextInt(10)) toList
 //    val z = ((0 to o) map (_ => rng.nextInt(10))).toList
-    val x = List(1, 2, 3)
-    val y = List(2, 3, 1)
-    val z = List(1, 3, 5)
+//    val x = -1::List(1, 2, 3)
+//    val y = -1::List(2, 3, 1)
+    val x = -1::List(1, 2, 3)
+    val y = -1::List(2, 1, 3)
+    val z = -1::List(1, 3, 5)
     println(x, "\n", y, "\n", z)
+//    println(LCS3.lcs3(x, y, z))
     println(LCS3.lcs3(x, y, z))
   }
 
