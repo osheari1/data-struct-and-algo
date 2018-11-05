@@ -22,6 +22,11 @@
       <sourceFolder url="file://$MODULE_DIR$/src/week4/examples" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/week4/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/week4/benches" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/course2/rust-slns/week3/build_heap/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/course2/rust-slns/week3/build_heap/examples" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/course2/rust-slns/week3/build_heap/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/course2/rust-slns/week3/build_heap/benches" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/course2/rust-slns/week3/build_heap/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust-slns/src/week3/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust-slns/src/week4/target" />
       <excludeFolder url="file://$MODULE_DIR$/src/week1/target" />
