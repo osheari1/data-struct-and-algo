@@ -1,4 +1,5 @@
 # python3
+from queue import Queue
 import heapq
 
 
@@ -6,12 +7,17 @@ import heapq
 class JobQueue:
     def read_data_stdin(self):
         self.num_workers, m = map(int, input().split())
-        self.jobs = list(map(int, input().split()))
+        # self.jobs = list(map(int, input().split()))
+        self.jobs = Queue(-1)
+        for j in list(map(int, input().split())):
+            self.jobs.put_nowait(j)
         # self.jobs_naive = self.jobs
-        assert m == len(self.jobs)
+        # assert m == len(self.jobs)
 
     def read_data(self, jobs, num_workers):
-        self.jobs = jobs
+        self.jobs = Queue(-1)
+        for j in jobs:
+            self.jobs.put_nowait(j)
         self.jobs_naive = jobs
         self.num_workers = num_workers
 
@@ -56,13 +62,17 @@ class JobQueue:
             acc_times[i] = 0
             threads.append(i)
         heapq.heapify(threads)
-        while len(self.jobs) > 0:
+        # while len(self.jobs) > 0:
+        while not self.jobs.empty():
             # Get current job
             while len(threads) > 0:
-                if len(self.jobs) <= 0:
+                if self.jobs.empty():
                     break
-                job = self.jobs[0]
-                self.jobs = self.jobs[1:] if len(self.jobs) > 0 else []
+                job = self.jobs.get_nowait()
+                # if len(self.jobs) <= 0:
+                #     break
+                # job = self.jobs[0]
+                # self.jobs = self.jobs[1:] if len(self.jobs) > 0 else []
                 # Get thread
                 thread = heapq.heappop(threads)
                 # Append current time
@@ -78,15 +88,8 @@ class JobQueue:
 
         self.times = times
 
-    # def update_heap(self, heap, x):
-    #     # heap = list(map(lambda i: (i[0] - x, i[1]), heap))
-    #     heap = [(i[0] - x, i[1]) for i in heap]
-    #     # heapq.heapify(heap)
-    #     return heap
-
     def pop_jobs(self, running_jobs):
         if len(running_jobs) <= 0:
-            # return [], []
             return [], 0
         j_f, thread = heapq.heappop(running_jobs)
         threads = [thread]
@@ -106,10 +109,10 @@ class JobQueue:
 
 
 if __name__ == '__main__':
-    # job_queue = JobQueue()
-    # job_queue.read_data_stdin()
-    # job_queue.assign_jobs()
-    # job_queue.write_response()
+    job_queue = JobQueue()
+    job_queue.read_data_stdin()
+    job_queue.assign_jobs()
+    job_queue.write_response()
 
     # num_workers = 4
     # jobs = [1 for _ in range(0, 20)]
@@ -120,25 +123,26 @@ if __name__ == '__main__':
     # # # num_workers = 2
     # # # jobs = [1, 2, 3, 4, 5]
     # #
-    import random
-    n_exp = 1
-    m = 10 ** 5
-    n = 10 ** 5
-    t = 10 ** 9
 
-    random.seed(1)
-    num_workers = [random.randint(1, n) for _ in range(n_exp)]
-    jobs = [[random.randint(1, t) for _ in range(m)] for _ in range(n_exp)]
-    for job, nw in list(zip(jobs, num_workers)):
-        job_queue = JobQueue()
-        job_queue.read_data(job, nw)
-        # job_queue.assign_jobs_naive()
-        job_queue.assign_jobs()
-        # print(job_queue.times_naive)
-        print(job_queue.times)
-        # if job_queue.times != job_queue.times_naive:
-        #     print('FAIL')
-        # print(job_queue.times_naive)
-        # print(job_queue.times)
-        # break
-        print()
+    # import random
+    # n_exp = 1
+    # m = 10 ** 5
+    # n = 10 ** 5
+    # t = 10 ** 9
+    #
+    # random.seed(1)
+    # num_workers = [random.randint(1, n) for _ in range(n_exp)]
+    # jobs = [[random.randint(1, t) for _ in range(m)] for _ in range(n_exp)]
+    # for job, nw in list(zip(jobs, num_workers)):
+    #     job_queue = JobQueue()
+    #     job_queue.read_data(job, nw)
+    #     # job_queue.assign_jobs_naive()
+    #     job_queue.assign_jobs()
+    #     # print(job_queue.times_naive)
+    #     print(job_queue.times)
+    #     # if job_queue.times != job_queue.times_naive:
+    #     #     print('FAIL')
+    #     # print(job_queue.times_naive)
+    #     # print(job_queue.times)
+    #     # break
+    #     print()
