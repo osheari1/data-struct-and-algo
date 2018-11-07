@@ -26,14 +26,21 @@
       <sourceFolder url="file://$MODULE_DIR$/course2/rust-slns/week3/build_heap/examples" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/course2/rust-slns/week3/build_heap/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/course2/rust-slns/week3/build_heap/benches" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/course2/rust-slns/week3/parallel/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/course2/rust-slns/week3/parallel/examples" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/course2/rust-slns/week3/parallel/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/course2/rust-slns/week3/parallel/benches" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/course2/rust-slns/week3/build_heap/target" />
+      <excludeFolder url="file://$MODULE_DIR$/course2/rust-slns/week3/parallel/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust-slns/src/week3/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust-slns/src/week4/target" />
       <excludeFolder url="file://$MODULE_DIR$/src/week1/target" />
       <excludeFolder url="file://$MODULE_DIR$/src/week2/target" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 3.6" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="R User Library" level="project" />
+    <orderEntry type="library" name="R Skeletons" level="application" />
   </component>
 </module>

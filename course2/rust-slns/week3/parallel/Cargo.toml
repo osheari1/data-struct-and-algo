@@ -1,5 +1,5 @@
 [package]
-name = "build-heap"
+name = "parallel"
 version = "0.1.0"
 authors = ["Riley O'Shea <RileyOShea@fairisaac.com>"]
 
