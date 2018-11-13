@@ -1,7 +1,6 @@
 # python3
 
 class Query:
-
     def __init__(self, query):
         self.type = query[0]
         if self.type == 'check':
