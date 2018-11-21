@@ -122,12 +122,12 @@ class Tree:
             return
         if self.zig(i):
             pass
-        elif self.zig_zag(i): # TODO: FIX ZIGZAG
+        elif self.zig_zag(i):
             pass
         elif self.zig_zig(i):
             pass
-        # else:
-        #     raise RuntimeError("No conditions met in splay")
+        else:
+            raise RuntimeError("No conditions met in splay")
         self.splay(i)
 
     def zig(self, i):
@@ -166,6 +166,7 @@ class Tree:
     def _update_r_l_gp(self, l_p_gp, r_p_gp, p_gp, gp, i):
         if gp == self.root:
             self.root = i
+            self.update_parent(i, -1)
             return
         if l_p_gp == gp:
             self.update_left(p_gp, i)
@@ -232,53 +233,35 @@ class Tree:
         r_gp = self.r[gp]
 
         if r_p == i and l_gp == p:
-            self.update_left(gp, r_i)
-            # self.l[gp] = self.r[i]  # Left of grandparent = right of i
-            self.update_parent(r_i, gp)
-            # self.p[self.r[i]] = gp  # Update subtree to new parent
 
-            self.update_right(i, gp)
-            # self.r[i] = gp  # Right of node = grandparent
-            self.update_parent(i, p_gp)
-            # self.p[i] = self.p[gp]  # Update parent of node
-            self.update_left(p_gp, i)
-            # self.l[self.p[gp]] = i  # Update left of parent of grandparent
-            self.update_parent(p_gp, i)
-            # self.p[gp] = i  # Parent of gradeparent is now node
-
-            self.update_parent(gp, i)
-            self.update_right(p, l_i)
-            # self.r[p] = self.l[i]  # Update right of parent to left of node
             self.update_left(i, p)
-            # self.l[i] = p  # Update left of node
+            self.update_left(gp, r_i)
+
+            self.update_right(p, l_i)
+            self.update_right(i, gp)
+
+            self.update_parent(l_i, p)
+            self.update_parent(r_i, gp)
+            self.update_parent(i, p_gp)
             self.update_parent(p, i)
-            # self.p[p] = i  # Update parent of parent to be node
+            self.update_parent(gp, i)
 
             self._update_r_l_gp(l_p_gp, r_p_gp, p_gp, gp, i)
 
             return True
 
         elif l_p == i and r_gp == p:
-            self.update_right(gp, l_i)
-            # self.r[gp] = self.l[i]  # Left of grandparent = right of i
-            self.update_parent(l_i, gp)
-            # self.p[self.l[i]] = gp  # Update subtree to new parent
-            self.update_left(i, gp)
-            # self.l[i] = gp  # Right of node = grandparent
-            self.update_parent(i, p_gp)
-            # self.p[i] = self.p[gp]  # Update parent of node
-            self.update_right(p_gp, i)
-            # self.r[self.p[gp]] = i  # Update left of parent of grandparent
-            self.update_parent(gp, i)
-            # self.p[gp] = i  # Parent of gradeparent is now node
-
-            self.update_parent(gp, i)
-            self.update_left(p, r_i)
-            # self.l[p] = self.r[i]  # Update right of parent to left of node
             self.update_right(i, p)
-            # self.r[i] = p  # Update left of node
+            self.update_right(gp, l_i)
+
+            self.update_left(p, r_i)
+            self.update_left(i, gp)
+
+            self.update_parent(r_i, p)
+            self.update_parent(l_i, gp)
+            self.update_parent(i, p_gp)
             self.update_parent(p, i)
-            # self.p[p] = i  # Update parent of parent to be node
+            self.update_parent(gp, i)
 
             self._update_r_l_gp(l_p_gp, r_p_gp, p_gp, gp, i)
             return True
